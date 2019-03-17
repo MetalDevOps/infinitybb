@@ -65,9 +65,7 @@ var GeradorFilmeSerieEpisodio = {
     GerarBBCode: function () {
         var str = `
             ${this.InfinityApresenta()}
-            ${this.InserirSeparador()}
             ${this.InserirTitulo()}
-            ${this.InserirSeparador()}
             ${this.InserirCapa()}
             ${this.InfinitySinopse()}
             ${this.InserirSinopse()}
