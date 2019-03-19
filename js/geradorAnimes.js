@@ -121,7 +121,8 @@ var GeradorAnimes = {
         }
 
         var str = `${retorno}
-                    [b][align=center] (-- ${this.Data.OMDb.Year} --) [/align][/b]`;
+                    [b][align=center] (–${this.Data.OMDb.Year}) [/align][/b]`;
+
 
         return str;
     },
