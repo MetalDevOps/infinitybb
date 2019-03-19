@@ -1,6 +1,6 @@
-var GeradorFilmeSerieEpisodio = {
+var GeradorAnimes = {
 
-    IMDbId: null,
+    AnimeID: null,
 
     TipoGerador: null,
 
@@ -22,15 +22,15 @@ var GeradorFilmeSerieEpisodio = {
         var isSerie = false;
         var isEpisodioSerie = false;
 
-        if (this.IMDbId.trim().length == 0 || this.IMDbId == null) {
+        if (this.AnimeID.trim().length == 0 || this.AnimeID == null) {
             bulmaToast.toast({ message: "O código do filme no IMDB é obrigatório", type: "is-danger", duration: 4000 });
             return false;
         }
 
         // $('#pageLoader').addClass("is-active");
 
-        this.Data.OMDb = this.OMDbService(this.IMDbId.trim());
-        this.Data.TMDb = this.TMDbService(this.IMDbId.trim());
+        this.Data.OMDb = this.OMDbService(this.AnimeID.trim());
+        this.Data.TMDb = this.TMDbService(this.AnimeID.trim());
 
         console.log(this.Data.OMDb);
         console.log(this.Data.TMDb);
@@ -78,27 +78,28 @@ var GeradorFilmeSerieEpisodio = {
             `;
 
         return str;
-    },    
+
+    },
+
 
     InfinityElenco: function () {
-        return `[align=center][img]http://i.imgur.com/V5K6PuJ.png[/img][/align]`;
+        return `[align=center][img]http://i.imgur.com/DemlMJ4.png[/img][/align]`;
     },    
 
     InfinityFicha: function () {
-        return `[align=center][img]http://i.imgur.com/m7mofjM.png[/img][/align]`;
+        return `[align=center][img]http://i.imgur.com/hRes7t3.png[/img][/align]`;
 
     },    
 
     InfinitySinopse: function () {
-        return `[align=center][img]http://i.imgur.com/lbv76Vf.png[/img][/align]`;
+        return `[align=center][img]http://i.imgur.com/NoxJV48.png[/img][/align]`;
 
     },    
 
     InfinityApresenta: function () {
-        return `[align=center][img]http://i.imgur.com/HUOQ0qn.png[/img][/align]`;
+        return `[align=center][img]http://i.imgur.com/sYtzdGb.png[/img][/align]`;
 
-
-    },    
+    }, 
 
     InserirSeparador: function () {
         return `[align=center][img]${this.StaticUrl.urlSeparatorImage}[/img][/align]`;
@@ -159,7 +160,7 @@ var GeradorFilmeSerieEpisodio = {
         }
 
 
-        var str = `
+        var str = `[b][align=center]SINOPSE[/align][/b]
                     ${sinopse}`;
 
 
@@ -168,6 +169,7 @@ var GeradorFilmeSerieEpisodio = {
 
     InserirInformacao: function () {
         var str = "";
+        str += "\n[b][align=center]INFORMAÇÕES[/align][/b]";
 
         switch (this.TipoGerador) {
             case "1":
@@ -222,7 +224,7 @@ var GeradorFilmeSerieEpisodio = {
                 switch (element.Source) {
                     case "Internet Movie Database":
                         str += `\n[align=center][img]${this.StaticUrl.urlIMDBLogoImage}[/img][/align]`;
-                        str += `\n[align=center][b][url=https://www.imdb.com/title/${this.Data.OMDb.imdbID}]${element.Value.trim()}[/b][/url][/align]`
+                        str += `\n[align=center][b][url=https://www.imdb.com/title/${this.Data.OMDb.AnimeID}]${element.Value.trim()}[/b][/url][/align]`
                         break;
 
                     case "Rotten Tomatoes":
@@ -250,13 +252,13 @@ var GeradorFilmeSerieEpisodio = {
     },
 
     InserirAgradecaComente: function () {
-        return `[align=center][img]http://i.imgur.com/fOFMJNW.png[/img][/align]`;
+        return `[align=center][img]http://i.imgur.com/B9WSYko.png[/img][/align]`;
     },
 
 
 
     OMDbService: function () {
-        var urlRequest = "https://www.omdbapi.com/?i=" + this.IMDbId + "&y=&plot=full&apikey=b045eb33";
+        var urlRequest = "https://www.omdbapi.com/?i=" + this.AnimeID + "&y=&plot=full&apikey=b045eb33";
 
         var result = null;
 
@@ -271,7 +273,7 @@ var GeradorFilmeSerieEpisodio = {
     },
 
     TMDbService: function () {
-        var urlRequest = "https://api.themoviedb.org/3/find/" + this.IMDbId + "?api_key=650fbb9313eab50f47bc5981772e8218&language=pt-BR&external_source=imdb_id";
+        var urlRequest = "https://api.themoviedb.org/3/find/" + this.AnimeID + "?api_key=650fbb9313eab50f47bc5981772e8218&language=pt-BR&external_source=imdb_id";
 
         var result = null;
 

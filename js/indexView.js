@@ -12,8 +12,11 @@ var indexView = {
                 case "2":
                     $('#divJogosSteam').show();
                     break;
-
-                default:
+                case "3":
+                    $('#divPlayStore').show();
+                    break;
+                case "4":
+                    $('#divAnimes').show();
                     break;
             }
 
@@ -33,14 +36,28 @@ var indexView = {
 
         });
 
+        $('#btnLoadPlayStore').click(function () {
+
+            GeradorAplicativoPlayStore.GooglePlayId = $('#txtPlayStoreId').val().trim();
+            GeradorAplicativoPlayStore.Validar();
+
+        });
+         $('#btnLoadAnimes').click(function () {
+
+            GeradorAnimes.AnimeID = $('#txtAnimesId').val().trim();
+            GeradorAnimes.Validar();
+
+        });
+        
+
         jQuery.ajaxSetup({
-	        beforeSend: function () {
+            beforeSend: function () {
                 $('#pageLoader').addClass("is-active");
-	        },
-	        complete: function () {
+            },
+            complete: function () {
                 $('#pageLoader').removeClass("is-active");
-	        },
-	        success: function () { }
+            },
+            success: function () { }
         });
 
 
